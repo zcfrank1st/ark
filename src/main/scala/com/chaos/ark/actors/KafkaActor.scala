@@ -11,7 +11,7 @@ import org.apache.kafka.common.serialization.{ByteArraySerializer, StringSeriali
   */
 class KafkaActor extends Actor with KafkaSupport with ConfigSupport {
   implicit val producerSettings: ProducerSettings[Array[Byte], String] =
-    ProducerSettings(context.system, new ByteArraySerializer, new StringSerializer).withBootstrapServers(config.getString("akka.kafka.servers"))
+    ProducerSettings(context.system, new ByteArraySerializer, new StringSerializer).withBootstrapServers(kafkaServers)
 
   override def receive: Receive = {
     case c @ KafkaMessage(_, _) =>
