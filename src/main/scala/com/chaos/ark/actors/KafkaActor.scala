@@ -14,8 +14,8 @@ class KafkaActor extends Actor with KafkaSupport with ConfigSupport {
     ProducerSettings(context.system, new ByteArraySerializer, new StringSerializer).withBootstrapServers(config.getString("akka.kafka.servers"))
 
   override def receive: Receive = {
-    case KafkaMessage(ct, cl) =>
-      sendToKafka(ct, cl)
+    case c @ KafkaMessage(_, _) =>
+      sendToKafka(c)
     case _ => // nothing to do
   }
 }
