@@ -1,0 +1,25 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <!--<appender name="FILE" class="ch.qos.logback.core.FileAppender">-->
+        <!--<File>/opt/logs/ark/ark.log</File>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--<FileNamePattern>/opt/logs/ark/ark.%d{yyyy-MM-dd}.log</FileNamePattern>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<Pattern>%d %msg%n</Pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+    <logger name="akka" level="INFO" />
+
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+        <!--<appender-ref ref="FILE"/>-->
+    </root>
+
+</configuration>

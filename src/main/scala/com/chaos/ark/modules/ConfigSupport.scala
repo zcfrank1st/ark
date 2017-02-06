@@ -10,5 +10,5 @@ trait ConfigSupport {
 
   val apiPort: Int = config.getInt("ark.api.port")
   val apiHost: String = config.getString("ark.api.host")
-  val kafkaServers: String = config.getString("akka.kafka.servers")
+  val kafkaServers: String = config.getString("ark.kafka.servers")
 }
