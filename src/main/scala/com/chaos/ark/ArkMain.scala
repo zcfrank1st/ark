@@ -2,10 +2,9 @@ package com.chaos.ark
 
 import akka.actor.{ActorSystem, Props}
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
-import com.chaos.ark.actors.CoreActor
+import com.chaos.ark.actors.{DispatchActor, FileActor, KafkaActor}
 import com.chaos.ark.models.Creature
 import com.chaos.ark.modules.{ConfigSupport, JsonSupport}
 
@@ -16,21 +15,20 @@ import scala.io.StdIn
   * Created by zcfrank1st on 06/02/2017.
   */
 object ArkMain extends App with JsonSupport with ConfigSupport {
-  val port = config.getInt("ark.port")
-  val host = config.getString("ark.host")
+  val port = config.getInt("ark.api.port")
+  val host = config.getString("ark.api.host")
 
   implicit val system = ActorSystem("ark")
   implicit val materializer = ActorMaterializer()
   implicit val executionContext = system.dispatcher
 
-  val coreActor = system.actorOf(Props[CoreActor])
+  val dispatchActor = system.actorOf(Props[DispatchActor])
 
   val route =
     post {
       path("ark") {
         entity(as[Creature]) { creature =>
-          // TODO send message to actor
-          coreActor ! creature
+          dispatchActor ! creature
           complete("ok")
         }
       }
