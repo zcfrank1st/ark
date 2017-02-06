@@ -14,32 +14,31 @@ import scala.io.StdIn
 /**
   * Created by zcfrank1st on 06/02/2017.
   */
-object ArkMain extends JsonSupport with ConfigSupport {
+object ArkMain extends App with JsonSupport with ConfigSupport {
   val port = config.getInt("ark.port")
   val host = config.getString("ark.host")
 
-  def main(args: Array[String]): Unit = {
-    implicit val system = ActorSystem("ark")
-    implicit val materializer = ActorMaterializer()
-    implicit val executionContext = system.dispatcher
+  implicit val system = ActorSystem("ark")
+  implicit val materializer = ActorMaterializer()
+  implicit val executionContext = system.dispatcher
 
-    val route =
-      post {
-        path("ark") {
-          entity(as[Creature]) { creature =>
-            // TODO send message to actor
+  val route =
+    post {
+      path("ark") {
+        entity(as[Creature]) { creature =>
+          // TODO send message to actor
 
-            complete("ok")
-          }
+          complete("ok")
         }
       }
+    }
 
-    val bindingFuture = Http().bindAndHandle(route, host, port)
+  val bindingFuture = Http().bindAndHandle(route, host, port)
 
-    println(s"Server online at http://$host:$port/\nPress RETURN to stop...")
-    StdIn.readLine() // let it run until user presses return
-    bindingFuture
-      .flatMap(_.unbind()) // trigger unbinding from the port
-      .onComplete(_ => system.terminate()) // and shutdown when done
-  }
+  println(s"Server online at http://$host:$port/\nPress RETURN to stop...")
+  StdIn.readLine() // let it run until user presses return
+  bindingFuture
+    .flatMap(_.unbind()) // trigger unbinding from the port
+    .onComplete(_ => system.terminate()) // and shutdown when done
+
 }
