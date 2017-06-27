@@ -22,7 +22,9 @@ Ark
         "param": "{}",
         
         "mid": "hello",
-        "timestamp": "2013-03-12 00:00:00"
+        "timestamp": "2013-03-12 00:00:00"，
+        
+        "extra": ""
     }
 
 #### Licence
