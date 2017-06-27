@@ -1,6 +1,7 @@
 package com.chaos.ark.modules
 
 import com.chaos.ark.models.Creature
+import com.google.gson.Gson
 import spray.json.DefaultJsonProtocol._
 import spray.json.RootJsonFormat
 
@@ -9,4 +10,6 @@ import spray.json.RootJsonFormat
   */
 trait JsonSupport {
   implicit val creatureFormat: RootJsonFormat[Creature] = jsonFormat3(Creature)
+
+  val gson = new Gson()
 }

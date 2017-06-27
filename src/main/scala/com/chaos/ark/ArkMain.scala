@@ -16,7 +16,7 @@ import scala.io.StdIn
 /**
   * Created by zcfrank1st on 06/02/2017.
   */
-object ArkMain extends App with ConfigSupport with JsonSupport{
+object ArkMain extends App with ConfigSupport with JsonSupport {
 
   implicit val system = ActorSystem("ark")
   implicit val materializer = ActorMaterializer()
