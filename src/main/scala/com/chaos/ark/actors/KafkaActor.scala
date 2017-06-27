@@ -14,6 +14,7 @@ import org.apache.kafka.common.serialization.{ByteArraySerializer, StringSeriali
   * Created by zcfrank1st on 06/02/2017.
   */
 class KafkaActor extends Actor with ConfigSupport with JsonSupport {
+  // TODO test if ok
   private val producerSettings: ProducerSettings[Array[Byte], String] =
     ProducerSettings(context.system, new ByteArraySerializer, new StringSerializer).withBootstrapServers(kafkaServers)
 
