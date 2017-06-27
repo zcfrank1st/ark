@@ -2,6 +2,7 @@ group 'com.chaos'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'scala'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
 
@@ -31,3 +32,5 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
+
+mainClassName = "com.chaos.ark.ArkMain"
