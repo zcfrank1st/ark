@@ -12,7 +12,7 @@ class FileActor extends Actor {
 
   override def receive: Receive = {
     case Creature(_, ct, _) =>
-      log.info(s"${ct.actionId}\t${ct.pageId}\t${ct.moduleId}\t${ct.referActionId}\t${ct.path}\t${ct.param}\t${ct.mid}\t${ct.timestamp}\t${ct.extra}")
+      log.info(s"${ct.actionId}\t${ct.pageId}\t${ct.moduleId}\t${ct.elementId}\t${ct.referActionId}\t${ct.path}\t${ct.param}\t${ct.mid}\t${ct.timestamp}\t${ct.extra}")
 
     case _ => // nothing to do
   }

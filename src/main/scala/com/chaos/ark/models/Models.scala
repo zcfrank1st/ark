@@ -7,6 +7,7 @@ final case class Log(
   actionId: String,
   pageId: String,
   moduleId: String,
+  elementId: String,
   referActionId: String,
 
   path: String,

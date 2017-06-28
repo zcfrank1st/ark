@@ -13,9 +13,10 @@ Ark
 #### 打点结构定义(通用)
 
     {
-        "actionId": "action#1"
+        "actionId": "action#1",
         "pageId": "page#1",
         "moduleId": "module#1",
+        "elementId": "element#1",
         "referActionId": "asddsadasd",
         
         "path": "/api/.json(.html)",
@@ -42,10 +43,11 @@ http://host:port/ark
 {
     "typ": 0,
     "content": {
-        "actionId": "action#1"
+        "actionId": "action#1",
         "pageId": "page#1",
         "moduleId": "module#1",
-        "referActionId": "asddsadasd",
+        "elementId": "element#1",
+        "referActionId": "action#0",
                 
         "path": "/api/.json(.html)",
         "param": "{}",
