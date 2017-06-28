@@ -60,10 +60,10 @@ http://host:port/ark
 }
 ```
     
-③ 返回json样例
+③ 返回
     
 ```
-
+ok
 ```
 
 #### Licence
